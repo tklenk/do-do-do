@@ -46,18 +46,11 @@ class App extends Component {
       padding: '8px',
       cursor: 'pointer'
     }
-  return (
-    <div className="App">
-      <h1>Welcome to React!</h1>
-      <p>What is your name?</p>
-      <button 
-        style={styleButton}
-        onClick={this.togglePersonHandler}
-      >
-        Show/Hide Name
-      </button>
-      { 
-        this.state.showPersons ? 
+
+    let persons = null
+
+    if (this.state.showPersons) {
+      persons = (
         <div>
           <Person 
             name={this.state.persons[0].name} 
@@ -71,8 +64,21 @@ class App extends Component {
           <Person 
             name={this.state.persons[2].name} 
             age={this.state.persons[2].age}/>
-          </div> : null
-      }
+        </div>
+      )
+    }
+
+  return (
+    <div className="App">
+      <h1>Welcome to React!</h1>
+      <p>What is your name?</p>
+      <button 
+        style={styleButton}
+        onClick={this.togglePersonHandler}
+      >
+        Show/Hide Name
+      </button>
+      {persons}
     </div>
   );
   // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I am React'))
