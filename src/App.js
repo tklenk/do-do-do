@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
+// import Radium from 'radium'
 import Person from './Person/Person'
 
 class App extends Component {
@@ -49,7 +50,11 @@ deletePersonHandler = (personIndex) => {
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     }
 
     let persons = null
@@ -68,6 +73,9 @@ deletePersonHandler = (personIndex) => {
         </div>
       )
       styleButton.backgroundColor = 'red'
+      styleButton[':hover'] = {
+        backgroundColor: 'lightred',
+        color: 'black'
     }
 
    let classes = []
