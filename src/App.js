@@ -44,7 +44,8 @@ deletePersonHandler = (personIndex) => {
 
   render () {
     const styleButton = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -66,12 +67,15 @@ deletePersonHandler = (personIndex) => {
           })}
         </div>
       )
+      styleButton.backgroundColor = 'red'
     }
+
+   let classes = ['red', 'bold'].join(' ')
 
   return (
     <div className="App">
       <h1>Welcome to React!</h1>
-      <p>What is your name?</p>
+      <p className={classes}>What is your name?</p>
       <button 
         style={styleButton}
         onClick={() => this.togglePersonHandler()}
