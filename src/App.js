@@ -70,12 +70,18 @@ deletePersonHandler = (personIndex) => {
       styleButton.backgroundColor = 'red'
     }
 
-   let classes = ['red', 'bold'].join(' ')
+   let classes = []
+    if (this.state.persons.length <= 2) {
+      classes.push('red') // classes = ['red']
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push('bold') // classes = ['red', 'bold']
+    }
 
   return (
     <div className="App">
       <h1>Welcome to React!</h1>
-      <p className={classes}>What is your name?</p>
+      <p className={classes.join(' ')}>What is your name?</p>
       <button 
         style={styleButton}
         onClick={() => this.togglePersonHandler()}
