@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './App.css'
+import classes from './App.css'
 import Person from './Person/Person'
 
 class App extends Component {
@@ -70,18 +70,18 @@ deletePersonHandler = (personIndex) => {
       styleButton.backgroundColor = 'red'
     }
 
-   let classes = []
+   let assignedCleasses = []
     if (this.state.persons.length <= 2) {
-      classes.push('red') // classes = ['red']
+      assignedCleasses.push(classes.red) // classes = ['red']
     }
     if (this.state.persons.length <= 1) {
-      classes.push('bold') // classes = ['red', 'bold']
+      assignedCleasses.push(classes.bold) // classes = ['red', 'bold']
     }
 
   return (
     <div className="App">
       <h1>Welcome to React!</h1>
-      <p className={classes.join(' ')}>What is your name?</p>
+      <p className={assignedCleasses.join(' ')}>What is your name?</p>
       <button 
         style={styleButton}
         onClick={() => this.togglePersonHandler()}
