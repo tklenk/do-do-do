@@ -43,16 +43,17 @@ deletePersonHandler = (personIndex) => {
   }
 
   render () {
-    const styleButton = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-    }
+    // const styleButton = {
+    //   backgroundColor: 'green',
+    //   color: 'white',
+    //   font: 'inherit',
+    //   border: '1px solid blue',
+    //   padding: '8px',
+    //   cursor: 'pointer',
+    // }
 
     let persons = null
+    let btnClass = ''
 
     if (this.state.showPersons) {
       persons = (
@@ -67,7 +68,8 @@ deletePersonHandler = (personIndex) => {
           })}
         </div>
       )
-      styleButton.backgroundColor = 'red'
+      // styleButton.backgroundColor = 'red'
+      btnClass = classes.Red
     }
 
    let assignedCleasses = []
@@ -83,7 +85,8 @@ deletePersonHandler = (personIndex) => {
       <h1>Welcome to React!</h1>
       <p className={assignedCleasses.join(' ')}>What is your name?</p>
       <button 
-        style={styleButton}
+        // style={styleButton}
+        className={btnClass}
         onClick={() => this.togglePersonHandler()}
       >
         Show/Hide Name
