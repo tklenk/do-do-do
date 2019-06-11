@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
-import Person from '../components/Persons/Person/Person.js'
-// import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Persons from '../components/Persons/Persons'
+import Cockpit from '../components/Cockpit/Cockpit'
 
 class App extends Component {
   state = {
@@ -28,15 +28,14 @@ class App extends Component {
 
     const persons = [...this.state.persons]
     persons[personIndex] = person
-
     this.setState({ persons: persons })
   }
 
-deletePersonHandler = (personIndex) => {
-    const persons = [...this.state.persons]
-    persons.splice(personIndex, 1)
-    this.setState({ persons: persons})
-}
+  deletePersonHandler = (personIndex) => {
+      const persons = [...this.state.persons]
+      persons.splice(personIndex, 1)
+      this.setState({ persons: persons})
+  }
 
   togglePersonHandler = () => {
     const doesShow = this.state.showPersons
@@ -44,50 +43,21 @@ deletePersonHandler = (personIndex) => {
   }
 
   render () {
-    const styleButton = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-    }
-
     let persons = null
 
     if (this.state.showPersons) {
-      persons = (
-        <div>
-          {this.state.persons.map((person, index) => {
-            return <Person
-              click={() => this.deletePersonHandler(index)} 
-              name={person.name} 
-              age={person.age} 
-              changed={(event) => this.nameChangedHandler(event, person.id)}/>
-          })}
-        </div>
-      )
-      styleButton.backgroundColor = 'red'
-    }
-
-   let assignedCleasses = []
-    if (this.state.persons.length <= 2) {
-      assignedCleasses.push('red') // classes = ['red']
-    }
-    if (this.state.persons.length <= 1) {
-      assignedCleasses.push('bold') // classes = ['red', 'bold']
+      persons = <Persons 
+            persons={this.state.persons}
+            clicked={this.deletePersonHandler}
+            changed={this.nameChangedHandler}/>
     }
 
   return (
     <div className="App">
-      <h1>Welcome to React!</h1>
-      <p className={assignedCleasses.join(' ')}>What is your name?</p>
-      <button 
-        style={styleButton}
-        onClick={() => this.togglePersonHandler()}
-      >
-        Show/Hide Name
-      </button>
+      <Cockpit 
+        showPersons={this.state.showPersons} 
+        persons={this.state.persons}
+        toggle={this.togglePersonHandler} />
       {persons}
     </div>
   );
