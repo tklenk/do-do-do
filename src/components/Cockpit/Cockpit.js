@@ -27,7 +27,7 @@ const cockpit = props => {
 
     return (
         <div className="App">
-            <h1>Welcome to React!</h1>
+            <h1>{props.title}</h1>
             <p className={assignedClasses.join(' ')}>What is your name?</p>
             <button 
                 style={styleButton}
