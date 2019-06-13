@@ -8,16 +8,27 @@ const cockpit = props => {
         setTimeout(() => {
             alert('Saved data to cloud!')
         }, 1000)
-    }, [props.persons]) //
-
+        return () => {
+            console.log('[Cockpit.js] cleanup work in useEffect')
+        }
+    }, [])  // if I want to execute when component renders for the first time - pass an empty array
+            // if you want to use componentDidMount use useEffect with empty array passed as a second argument
+    
+    useEffect(() => {
+        console.log('[Cockpit.js] 2nd useEffect')
+        return () => {
+            console.log('[Cockpit.js] cleanup work in 2nd useEffect')
+        }
+    })
+    
     const styleButton = {
-        backgroundColor: 'green',
-        color: 'white',
-        font: 'inherit',
-        border: '1px solid blue',
-        padding: '8px',
-        cursor: 'pointer',
-      }
+    backgroundColor: 'green',
+    color: 'white',
+    font: 'inherit',
+    border: '1px solid blue',
+    padding: '8px',
+    cursor: 'pointer',
+    }
 
     let assignedClasses = []
 
