@@ -14,6 +14,8 @@ shouldComponentUpdate(nextProps, nextState) {
   } else {
     return false
   }
+  // optimize performance in functional components like Cockpit
+  // (schouldComponenntUpdate is a great tool but in Class-based comp.)
 }
 
 getSnapshotBeforeUpdate(prevProps, prevState) {

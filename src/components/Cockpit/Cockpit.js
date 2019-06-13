@@ -5,11 +5,10 @@ const cockpit = props => {
 
     useEffect(() => {
         console.log('[Cockpit.js] useEffect')
-        const timer = setTimeout(() => {
+        setTimeout(() => {
             alert('Saved data to cloud!')
         }, 1000)
         return () => {
-            clearTimeout(timer)
             console.log('[Cockpit.js] cleanup work in useEffect')
         }
     }, [])  // if I want to execute when component renders for the first time - pass an empty array
@@ -37,10 +36,10 @@ const cockpit = props => {
         styleButton.backgroundColor = 'red'
     }
     
-    if (props.persons.length <= 2) {
+    if (props.personsLength <= 2) {
       assignedClasses.push('red') // classes = ['red']
     }
-    if (props.persons.length <= 1) {
+    if (props.personsLength <= 1) {
       assignedClasses.push('bold') // classes = ['red', 'bold']
     }
 
@@ -58,4 +57,4 @@ const cockpit = props => {
     )
 }
 
-export default cockpit
+export default React.memo(cockpit)
