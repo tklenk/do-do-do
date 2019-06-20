@@ -5,10 +5,15 @@ import withClass from '../../../hoc/withClass'
 import PropTypes from 'prop-types'
 
 class Person extends Component {
+    constructor(props) {
+        super(props)
+        this.inputElementRef = React.createRef()
+    }
 
     componentDidMount() {
         // document.querySelector('input').focus() //here will be focus of first element
-        this.inputElement.focus()
+        // this.inputElement.focus()
+        this.inputElementRef.current.focus()
     }
 
     render() {
@@ -21,7 +26,8 @@ class Person extends Component {
                 <p>{this.props.children}</p>
                 <input
                     // ref={(inputEl) => {inputEl.focus()}}
-                    ref={(inputEl) => {this.inputElement = inputEl}} //this approach works in class-based comp. not it funct.; this.inputElement -> will be a global property
+                    // ref={(inputEl) => {this.inputElement = inputEl}} //this approach works in class-based comp. not it funct.; this.inputElement -> will be a global property
+                    ref={this.inputElementRef}
                     type="text" 
                     onChange={this.props.changed}
                     value={this.props.name}
